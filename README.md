@@ -14,4 +14,4 @@
 
 - Базовая работа с JavaScript
 
-# Посмотреть результат можно [тут](https://paveleremich.github.io/russian-travel/index.html)
+# Посмотреть результат можно [тут](https://paveleremich.github.io/mesto/)
