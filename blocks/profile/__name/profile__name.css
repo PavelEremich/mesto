@@ -1,0 +1,11 @@
+.profile__name {
+  display: flex;
+  gap: 18px;
+  align-items: flex-end;
+  justify-content: start;
+}
+@media screen and (max-width: 720px) {
+  .profile__name {
+    justify-content: center;
+  }
+}
