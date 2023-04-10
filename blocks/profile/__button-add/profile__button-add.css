@@ -1,5 +1,5 @@
 .profile__button-add {
-  background: url(/images/Add-button.svg) center/22px 22px no-repeat;
+  background: url("../../../images/Add-button.svg") center/22px 22px no-repeat;
   display: block;
   max-width: 150px;
   height: 50px;
