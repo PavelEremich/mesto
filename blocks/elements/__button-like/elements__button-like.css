@@ -3,5 +3,11 @@
   width: 22px;
   height: 19px;
   border: none;
-  padding: 25px 0 31px 0;
+  margin: 25px 0 31px 0;
+  cursor: pointer;
+  transition: opacity 0.4s ease-out;
+}
+
+.elements__button-like:hover {
+  opacity: 0.5;
 }

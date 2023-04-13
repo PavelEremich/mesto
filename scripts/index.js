@@ -2,28 +2,28 @@ let buttonEd = document.querySelector(".profile__button-edit");
 let popupEd = document.querySelector(".popup");
 let inputName = document.querySelector(".profile__name-edit");
 let inputProfession = document.querySelector(".profile__profession");
-let popupName = document.querySelector(".popup__input-name");
-let popupJob = document.querySelector(".popup__input-job");
-let buttonAdd = document.querySelector(".popup__form");
+let popupName = document.querySelector(".popup__input_name");
+let popupJob = document.querySelector(".popup__input_job");
+let formAdd = document.querySelector(".popup__form");
 let buttonClose = document.querySelector(".popup__close")
 
-function OpenPopup() {
-    popupEd.style.visibility = "visible";
+function openPopup() {
+    popupEd.classList.add('popup_opened');
     popupName.value = inputName.textContent;
     popupJob.value = inputProfession.textContent;
 };
 
-buttonEd.addEventListener("click", OpenPopup);
+buttonEd.addEventListener("click", openPopup);
 
 function handleFormSubmit (evt) {
-    evt.preventDefault(); 
+    evt.preventDefault();
     inputName.textContent = popupName.value;
     inputProfession.textContent = popupJob.value;
-    popupEd.style.visibility = "hidden";
+    popupEd.classList.remove('popup_opened');
 }
-buttonAdd.addEventListener('submit', handleFormSubmit);
+formAdd.addEventListener('submit', handleFormSubmit);
 
-function ClosePopup() {
-    popupEd.style.visibility = "hidden";
+function closePopup() {
+  popupEd.classList.remove('popup_opened');
 }
-buttonClose.addEventListener('click', ClosePopup);
+buttonClose.addEventListener('click', closePopup);
