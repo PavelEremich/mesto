@@ -1,4 +1,4 @@
-.popup__close {
+.popup__close-cards {
   width: 32px;
   height: 32px;
   background: url("../../../images/Close.svg") center/32px 32px no-repeat;
@@ -10,7 +10,7 @@
   padding: 0;
 }
 @media screen and (max-width: 520px) {
-  .popup__close {
+  .popup__close-cards {
     width: 20px;
     height: 20px;
     right: 0;
