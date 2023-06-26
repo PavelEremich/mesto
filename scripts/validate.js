@@ -50,13 +50,21 @@ function hasInvalidInput(inputList) {
 };
 function toggleButtonState(inputList, buttonElement, inactiveButtonClass) {
   if (hasInvalidInput(inputList)) {
-  buttonElement.classList.add(inactiveButtonClass);
-  buttonElement.setAttribute("disabled", "disabled" );
+    disableSubmitButton(buttonElement, inactiveButtonClass);
 
 } else {
-  buttonElement.classList.remove(inactiveButtonClass);
-  buttonElement.removeAttribute("disabled", "disabled");
+    enableSubmitButton(buttonElement, inactiveButtonClass);
 }
+};
+
+function disableSubmitButton(buttonElement, inactiveButtonClass) {
+  buttonElement.classList.add(inactiveButtonClass);
+  buttonElement.setAttribute("disabled", true);
+};
+
+function enableSubmitButton(buttonElement, inactiveButtonClass) {
+  buttonElement.classList.remove(inactiveButtonClass);
+  buttonElement.removeAttribute("disabled");
 };
 
 enableValidation({
