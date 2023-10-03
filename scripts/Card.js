@@ -1,10 +1,9 @@
-import {popupImage, popupPhoto, popupTitle} from "./index.js";
-
 export default class Card {
-  constructor(data, templateSelector) {
+  constructor(data, templateSelector, openPopupImage) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
+    this._openPopupImage = openPopupImage;
   }
 
   _getTemplate() {
@@ -14,8 +13,9 @@ export default class Card {
 
   generateCard() {
     this._element = this._getTemplate();
-    this._element.querySelector(".elements__photo").src = this._link;
-    this._element.querySelector(".elements__photo").alt = this._name;
+    this._cardsPhoto = this._element.querySelector(".elements__photo");
+    this._cardsPhoto.src = this._link;
+    this._cardsPhoto.alt = this._name;
     this._element.querySelector(".elements__name").textContent = this._name;
     this._element.querySelector(".elements__button-delete").addEventListener("click", () => {
       this._deleteCardButton()
@@ -23,8 +23,12 @@ export default class Card {
     this._element.querySelector(".elements__button-like").addEventListener("click",() => {
       this._toggleLike()
     });
-    this._element.querySelector(".elements__photo").addEventListener("click",  () => {
-      this._openPopupImage()
+    this._cardsPhoto.addEventListener("click",  () => {
+      this._openPopupImage({
+        link: this._link,
+        alt: this._name,
+        name: this._name,
+      })
     });
     return this._element;
   };
@@ -37,11 +41,5 @@ export default class Card {
     this._element.querySelector(".elements__button-like").classList.toggle('elements__button-like-active');
   };
 
-  _openPopupImage() {
-    openPopup(popupImage);
-    popupPhoto.src =  this._link;
-    popupPhoto.alt =  this._name;
-    popupTitle.textContent =  this._name;
-  };
 }
 

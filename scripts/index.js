@@ -1,4 +1,4 @@
-import Card from "./cards.js";
+import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
 import { initialCards, setting } from "./constants.js";
 
@@ -29,7 +29,7 @@ const popupSaveAdd = document.querySelector('.popup__save_add');
 function openPopup(popupOpen) {
   popupOpen.classList.add('popup_opened');
   document.addEventListener('keydown', closeByEscape);
-
+  document.addEventListener("mousedown", closeByOverlay);
 };
 
 buttonEd.addEventListener("click", function() {
@@ -51,12 +51,14 @@ formEd.addEventListener('submit', editFormSubmit);
 function closePopup(popupClose) {
     popupClose.classList.remove('popup_opened');
     document.removeEventListener('keydown', closeByEscape);
+    document.removeEventListener("mousedown", closeByOverlay);
 };
 profileClose.addEventListener('click', function(){
   closePopup(popupEd)
 });
 
 buttonAdd.addEventListener("click", function() {
+  formCreate.disableSubmitButtonAdd();
   openPopup(popupAdd);
   formCreate.resetValidityForm();
   formAdd.reset();
@@ -70,24 +72,30 @@ imageClose.addEventListener('click', function(){
   closePopup(popupImage)
 });
 
-const renderCard = () => {
-  initialCards.forEach((item) => {
-  const newcard = new Card(item, "#card-template");
-  const cardElement =  newcard.generateCard();
-  cardsList.append(cardElement);
-  });
+const openPopupImage = (item) => {
+  openPopup(popupImage);
+  popupPhoto.src = item.link;
+  popupPhoto.alt = item.name;
+  popupTitle.textContent = item.name;
 };
 
-renderCard();
+const addCard = (item) => {
+  const newCard = new Card(item, "#card-template", openPopupImage);
+  return newCard.generateCard();
+}
+
+initialCards.forEach((item) => {
+  addCard(item, "#card-template", openPopupImage);
+  cardsList.append(addCard(item));
+  });
 
 function createFormSubmit (evt) {
   evt.preventDefault();
-  const createItem = {};
-  createItem.name = popupPlace.value;
-  createItem.link = popupLink.value;
-  const newcard = new Card(createItem, "#card-template");
-  const cardElement =  newcard.generateCard();
-  cardsList.prepend(cardElement);
+  const itemCreate = {};
+  itemCreate.name = popupPlace.value;
+  itemCreate.link = popupLink.value;
+  addCard( itemCreate, "#card-template", openPopupImage);
+  cardsList.prepend(addCard(itemCreate));
   closePopup(popupAdd);
   formAdd.reset();
 };
@@ -114,6 +122,3 @@ function closeByOverlay (evt) {
   }
 };
 
-document.addEventListener("mousedown", closeByOverlay);
-
-export {popupImage, popupPhoto, popupTitle}
