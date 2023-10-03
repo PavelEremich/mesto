@@ -1,5 +1,5 @@
 import Card from "./cards.js";
-import FormValidator from "./validate.js";
+import FormValidator from "./FormValidator.js";
 import { initialCards, setting } from "./constants.js";
 
 const buttonEd = document.querySelector(".profile__button-edit");
