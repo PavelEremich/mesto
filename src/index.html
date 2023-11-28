@@ -5,19 +5,19 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">
-  <script defer src="./scripts/index.js" type="module"></script>
+  <!--<link rel="stylesheet" href="./pages/index.css">-->
+  <!--<script defer src="./pages/index.js" type="module"></script>-->
 
   <title>Mesto</title>
 </head>
 
 <body class="page">
   <header class="header">
-    <img class="header__logo" src="./images/logo.svg" alt="Логотип">
+    <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="Логотип">
   </header>
   <main class="main">
     <section class="profile">
-      <img class="profile__avatar" src="./images/avatar.png" alt="Аватар">
+      <img class="profile__avatar" src="<%=require('./images/avatar.png')%>" alt="Аватар">
       <div class="profile__info">
         <div class="profile__name">
           <h1 class="profile__name-edit">Жак-Ив Кусто</h1>
@@ -48,7 +48,7 @@
         <span class="popup__error profile-job-error"></span>
         <button class="popup__save" type="submit">Сохранить</button>
       </form>
-      <button class="popup__close-profile button" type="button"></button>
+      <button class="popup__close-cards button" type="button"></button>
     </div>
   </div>
   <div class="popup popup_type_cards">
@@ -68,7 +68,7 @@
   </div>
   <div class="popup popup_type_image">
     <div class="popup__container-image">
-      <button class="popup__close-image button" type="button"></button>
+      <button class="popup__close-cards button" type="button"></button>
       <img src="#" class="popup__card-image" alt="">
       <h3 class="popup__title-image"></h3>
     </div>
