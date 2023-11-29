@@ -14,13 +14,14 @@ export default class Card {
   generateCard() {
     this._element = this._getTemplate();
     this._cardsPhoto = this._element.querySelector(".elements__photo");
+    this._elementLike = this._element.querySelector(".elements__button-like");
     this._cardsPhoto.src = this._link;
     this._cardsPhoto.alt = this._name;
     this._element.querySelector(".elements__name").textContent = this._name;
     this._element.querySelector(".elements__button-delete").addEventListener("click", () => {
       this._deleteCardButton()
     });
-    this._element.querySelector(".elements__button-like").addEventListener("click",() => {
+    this._elementLike.addEventListener("click",() => {
       this._toggleLike()
     });
     this._cardsPhoto.addEventListener("click",  () => {
@@ -34,7 +35,7 @@ export default class Card {
   };
 
   _toggleLike() {
-    this._element.querySelector(".elements__button-like").classList.toggle('elements__button-like-active');
+    this._elementLike.classList.toggle('elements__button-like-active');
   };
 
 }
